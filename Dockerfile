@@ -1,8 +1,11 @@
-FROM jfloff/alpine-python:2.7
+FROM registry.centos.org/centos/centos
 
-# for a flask server
+COPY . /opt
+RUN mv /opt/config.template /opt/config.py
+RUN yum -y update
+RUN yum -y install python python-flask python-requests
+
 EXPOSE 5000
-
-RUN pip install flask
-RUN pip install requests
+WORKDIR /opt
 CMD python server.py
+
