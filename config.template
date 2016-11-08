@@ -1,7 +1,8 @@
+from os import environ
 USERNAME = "Github"
 ICON_URL = ""
 MATTERMOST_WEBHOOK_URLS = {
-    'default' : ("yourdomain.org/hooks/hookid", "off-topic"),
+    'default' : (environ['HOOK_URL'], environ['CHANNEL_NAME']),
 }
 SECRET = ""
 SHOW_AVATARS = True
@@ -10,3 +11,4 @@ SERVER = {
     'address': "0.0.0.0",
     'port': 5000,
 }
+
