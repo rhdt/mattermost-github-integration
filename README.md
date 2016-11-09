@@ -56,8 +56,8 @@ To deploy with Docker, make sure you have Docker installed and run:
 docker build --rm=true -t mm-github .
 ```
 Environment variables 
-HOOK_URL     : url to mattermost webhook
-CHANNEL_NAME : channel which should be notified
+ * HOOK_URL     : url to mattermost webhook
+ * CHANNEL_NAME : channel which should be notified
 
 If you want to run in background mode, change the option `--rm` for `-d`.
 
