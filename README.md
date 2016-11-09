@@ -12,21 +12,20 @@ Inspired by [mattermost-integration-gitlab](https://github.com/NotSqrt/mattermos
 Copy `config.template` to `config.py` and edit it with your details. For example:
 
 ```python
+from os import environ
 USERNAME = "Github"
-ICON_URL = "yourdomain.org/github.png"
+ICON_URL = ""
 MATTERMOST_WEBHOOK_URLS = {
-    'default' : ("yourdomain.org/hooks/hookid", "off-topic"),
-    'teamname/repositoryname' : ("yourdomain.org/hooks/hookid2", "repository-channel-id"),
-    'teamname' : ("yourdomain.org/hooks/hookid3", "town-square"),
-    'teamname/unimportantrepo' : None,
+    'default' : (environ['HOOK_URL'], environ['CHANNEL_NAME']),
 }
-SECRET = 'secretkey'
+SECRET = ""
 SHOW_AVATARS = True
 SERVER = {
-    'hook': "/"
-,   'address': "0.0.0.0"
-,   'port': 5000
+    'hook': "/",
+    'address': "0.0.0.0",
+    'port': 5000,
 }
+
 ```
 
 GitHub messages can be delegated to different Mattermost hooks. The order is as
@@ -55,8 +54,10 @@ To deploy with Docker, make sure you have Docker installed and run:
 
 ```
 docker build --rm=true -t mm-github .
-docker run --rm -v "$(pwd)":/home/app -w /home/app -p 5000:5000 -ti mm-github
 ```
+Environment variables 
+HOOK_URL     : url to mattermost webhook
+CHANNEL_NAME : channel which should be notified
 
 If you want to run in background mode, change the option `--rm` for `-d`.
 
