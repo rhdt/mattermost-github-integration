@@ -1,0 +1,52 @@
+
+{
+  "kind": "Template",
+  "apiVersion": "v1",
+  "metadata": {
+    "name": "mattermost-github-integration",
+    "creationTimestamp": null,
+    "annotations": {
+      "description": "mattermost-github-integration Example"
+    }
+  },
+  "parameters": [
+    {
+      "name": "MMURL",
+      "description": "Mattermost incoming webhook URL"
+    },
+    {
+      "name": "CHANNEL",
+      "description": "Mattermost incoming webhook URL"
+    }
+  ],
+  "objects": [
+    {
+      "kind": "Pod",
+      "apiVersion": "v1",
+      "metadata": {
+        "name": "mattermost-github-integration",
+        "labels": {
+          "name": "mattermost-github-integration"
+        }
+      },
+      "spec": {
+        "containers": [
+          {
+            "name": "mattermost-github-integration",
+            "image": "registry.centos.org/sgk/mattermost-github-integration:latest",
+            "env": [
+              {
+                "name": "HOOK_URL",
+                "value": "${MMURL}"
+              },
+              {
+                "name": "CHANNEL_NAME",
+                "value": "${CHANNEL}"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}
