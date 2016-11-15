@@ -1,4 +1,3 @@
-
 {
   "kind": "Template",
   "apiVersion": "v1",
@@ -20,6 +19,32 @@
     }
   ],
   "objects": [
+    {
+      "kind": "Service",
+      "apiVersion": "v1",
+      "metadata": {
+        "name": "github-mm-integration",
+        "labels": {
+          "name": "github-mm-integration"
+        }
+      },
+      "spec": {
+        "ports": [
+          {
+            "name": "github-mm-integration",
+            "protocol": "TCP",
+            "port": 5000,
+            "targetPort": 5000,
+            "nodePort": 0
+          }
+        ],
+        "selector": {
+          "name": "mattermost-github-integration"
+        },
+        "type": "ClusterIP",
+        "sessionAffinity": "None"
+      }
+    },
     {
       "kind": "Pod",
       "apiVersion": "v1",
