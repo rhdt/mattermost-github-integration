@@ -58,7 +58,7 @@
         "containers": [
           {
             "name": "mattermost-github-integration",
-            "image": "registry.centos.org/sgk/mattermost-github-integration:latest",
+            "image": "registry.centos.org/mattermost/mattermost-github-integration:latest",
             "env": [
               {
                 "name": "HOOK_URL",
