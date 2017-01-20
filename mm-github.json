@@ -10,6 +10,10 @@
   },
   "parameters": [
     {
+      "name": "REPOS",
+      "description": "Github reponames"
+    },
+    {
       "name": "MMURL",
       "description": "Mattermost incoming webhook URL"
     },
@@ -61,12 +65,16 @@
             "image": "registry.centos.org/mattermost/mattermost-github-integration:latest",
             "env": [
               {
-                "name": "HOOK_URL",
-                "value": "${MMURL}"
+                "name": "REPO_NAMES",
+                "value": "${REPOS}"
+              },              
+              {
+                "name": "HOOK_URLS",
+                "value": "${MMURLS}"
               },
               {
-                "name": "CHANNEL_NAME",
-                "value": "${CHANNEL}"
+                "name": "CHANNEL_NAMES",
+                "value": "${CHANNELS}"
               }
             ]
           }
