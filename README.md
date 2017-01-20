@@ -16,7 +16,10 @@ from os import environ
 USERNAME = "Github"
 ICON_URL = ""
 MATTERMOST_WEBHOOK_URLS = {
-    'default' : (environ['HOOK_URL'], environ['CHANNEL_NAME']),
+    'default' : ("yourdomain.org/hooks/hookid", "off-topic"),
+    'teamname1/repositoryname' : ("yourdomain.org/hooks/hookid2", "repository-channel-id"),
+    'teamname2' : ("yourdomain.org/hooks/hookid3", "town-square"),
+    'teamname3/unimportantrepo' : None,
 }
 SECRET = ""
 SHOW_AVATARS = True
