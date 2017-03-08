@@ -14,11 +14,11 @@
       "description": "Github reponames"
     },
     {
-      "name": "MMURL",
+      "name": "MMURLS",
       "description": "Mattermost incoming webhook URL"
     },
     {
-      "name": "CHANNEL",
+      "name": "CHANNELS",
       "description": "Mattermost incoming webhook URL"
     }
   ],
