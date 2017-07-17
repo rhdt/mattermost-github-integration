@@ -1,11 +1,21 @@
 FROM registry.centos.org/centos/centos
 
-COPY . /opt
-RUN mv /opt/config.template /opt/config.py
-RUN yum -y update
-RUN yum -y install python python-flask python-requests
+# Install dependencies for mattermost-integration-github
+RUN yum -y update && \
+    yum -y install epel-release && \
+    yum -y install python-pip git && \
+    pip install --upgrade pip && \
+    yum clean all
+
+# Install mattermost-integration-github
+RUN pip install git+https://github.com/softdevteam/mattermost-github-integration
+
+# copy config file
+COPY config.py /opt/
+
+# set env variables
+ENV FLASK_APP=mattermostgithub MGI_CONFIG_FILE=/opt/config.py
 
 EXPOSE 5000
-WORKDIR /opt
-CMD python server.py
 
+CMD flask run --host=0.0.0.0
