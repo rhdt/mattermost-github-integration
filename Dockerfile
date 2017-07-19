@@ -8,7 +8,7 @@ RUN yum -y update && \
     yum clean all
 
 # Install mattermost-integration-github
-RUN pip install git+https://github.com/softdevteam/mattermost-github-integration
+RUN pip install git+https://github.com/softdevteam/mattermost-github-integration@92394f2
 
 # copy config file
 COPY config.py /opt/
