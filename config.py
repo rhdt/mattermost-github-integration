@@ -1,7 +1,7 @@
 from os import environ                                                                                                                             
 from sys import exit
 USERNAME = "Github"
-ICON_URL = "https://www.openshift.com/hubfs/favicon.ico"
+ICON_URL = "https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png"
 reponames = [x for x in environ['REPO_NAMES'].split(',')]
 hook_urls = [x for x in environ['HOOK_URLS'].split(',')]
 channels = [x for x in environ['CHANNEL_NAMES'].split(',')]
